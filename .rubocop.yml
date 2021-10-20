@@ -13,6 +13,7 @@ Layout/LineLength:
     - "spec/**/*"
 
 AllCops:
+  NewCops: enable
   Exclude:
     - ".github/**/*"
     - 'db/**/*'
