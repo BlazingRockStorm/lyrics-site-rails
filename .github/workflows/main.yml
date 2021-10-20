@@ -14,3 +14,6 @@ jobs:
         run: gem install rubocop
       - name: Check code
         run: rubocop
+
+env:
+  RUBY_VERSION: 2.7.4
