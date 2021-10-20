@@ -24,6 +24,8 @@
 
 /public/assets
 .byebug_history
+/test
+.DS_Store
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
