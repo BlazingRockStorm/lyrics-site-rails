@@ -15,10 +15,9 @@ jobs:
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
       - name: Install Rubocop
-        run: gem install rubocop rubocop-rspec rubocop-rails
+        run: gem install bundler rubocop rubocop-rspec rubocop-rails
       - name: Setup reviewdog
-        run: |
-          mkdir -p $HOME/bin && curl -sfL https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh | sh -s -- -b $HOME/bin
+        run: mkdir -p $HOME/bin && curl -sfL https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh | sh -s -- -b $HOME/bin
       - name: Run rubocop with reviewdog
         env:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
