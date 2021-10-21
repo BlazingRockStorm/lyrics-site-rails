@@ -13,6 +13,6 @@ jobs:
       - name: Install Rubocop
         run: gem install rubocop rubocop-rspec rubocop-rails
       - name: Check code
-        run: rubocop —force-exclusion $(git diff —name-only)
+        run: git diff-tree -r --no-commit-id --name-only $(git rev-parse --abbrev-ref HEAD)@\{u\} HEAD | xargs ls -1 2>/dev/null | grep '\.rb$' | xargs bundle exec rubocop --force-exclusion
 env:
   RUBY_VERSION: 2.7.4
