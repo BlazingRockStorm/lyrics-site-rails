@@ -2,25 +2,17 @@ name: Lyrics Site Rails Test
 on: [pull_request]
 
 jobs:
-  pronto:
-    name: Rubocop Check
-    runs-on: ubuntu-latest
+  rubocop-test:
+    name: Rubocop
+    runs-on: ubuntu-18.04
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - run: |
-          git fetch --no-tags --prune --depth=10 origin +refs/heads/*:refs/remotes/origin/*
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
+      - uses: actions/checkout@v1
+      - uses: actions/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
-      - name: Setup pronto
-        run: gem install pronto pronto-rubocop
-      - name: Run Pronto
-        run: pronto run -f github_status github_pr -c origin/${{ github.base_ref }}
-        env:
-          PRONTO_PULL_REQUEST_ID: ${{ github.event.pull_request.number }}
-          PRONTO_GITHUB_ACCESS_TOKEN: "${{ github.token }}"
-
+      - name: Install Rubocop
+        run: gem install rubocop rubocop-rspec rubocop-rails
+      - name: Check code
+        run: rubocop —force-exclusion $(git diff —name-only)
 env:
   RUBY_VERSION: 2.7.4
