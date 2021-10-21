@@ -1,1 +1,0 @@
-alias cop="git add -N .; git diff --name-only | xargs rubocop"
