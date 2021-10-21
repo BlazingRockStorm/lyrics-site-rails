@@ -14,15 +14,12 @@ jobs:
       - uses: actions/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
-      - name: Install Rubocop
-        run: gem install bundler rubocop rubocop-rspec rubocop-rails
       - name: Run rubocop with reviewdog
         uses: reviewdog/action-rubocop@v2
         with:
           rubocop_version: gemfile
           rubocop_extensions: rubocop-rails:gemfile rubocop-rspec:gemfile
           reporter: github-pr-review
-        run: bundle exec rubocop | reviewdog -reporter=github-pr-review -f=rubocop
 
 env:
   RUBY_VERSION: 2.7.4
