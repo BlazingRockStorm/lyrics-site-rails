@@ -12,7 +12,11 @@ jobs:
           ruby-version: ${{ env.RUBY_VERSION }}
       - name: Install Rubocop
         run: gem install rubocop rubocop-rspec rubocop-rails
-      - name: Check code
-        run: bin/bash only-changed-files.sh
+      - name: rubocop
+        uses: reviewdog/action-rubocop@v2
+        with:
+          rubocop_version: gemfile
+          rubocop_extensions: rubocop-rails:gemfile rubocop-rspec:gemfile
+          reporter: github-pr-review
 env:
   RUBY_VERSION: 2.7.4
