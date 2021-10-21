@@ -10,16 +10,13 @@ jobs:
     name: Rubocop
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - uses: actions/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
-      - name: Run rubocop with reviewdog
-        uses: reviewdog/action-rubocop@v2
-        with:
-          rubocop_version: gemfile
-          rubocop_extensions: rubocop-rails:gemfile rubocop-rspec:gemfile
-          reporter: github-pr-review
+      - uses: HeRoMo/pronto-action@v1.26.0
 
 env:
   RUBY_VERSION: 2.7.4
