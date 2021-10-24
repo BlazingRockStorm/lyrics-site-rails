@@ -6,18 +6,14 @@ on:
   pull_request:
 
 jobs:
-  rubocop-test:
+  pronto:
     name: Rubocop
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-ruby@v1
+      - uses: actions/checkout@v2
         with:
-          ruby-version: ${{ env.RUBY_VERSION }}
-      - name: Install Rubocop
-        run: gem install rubocop rubocop-rspec rubocop-rails
-      - name: Check code
-        run: rubocop
+          fetch-depth: 0
+      - uses: HeRoMo/pronto-action@v1.26.0
 
 env:
   RUBY_VERSION: 2.7.4
