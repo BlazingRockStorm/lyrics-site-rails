@@ -24,9 +24,9 @@ RSpec.describe 'Songs', type: :request do
   end
 
   describe 'DELETE /api/songs/:id' do
-    it 'successfully delete a song' do
-      song = FactoryBot.create(:song)
+    let!(:song) { FactoryBot.create(:song) }
 
+    it 'successfully delete a song' do
       expect { delete "/api/songs/#{song.id}" }.to change(Song, :count).by(-1)
       expect(response).to have_http_status(:ok)
     end
