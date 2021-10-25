@@ -29,9 +29,9 @@ RSpec.describe 'Songs', type: :request do
 
   describe 'POST /api/songs' do
     context 'SUCCESS' do
-      it 'create new songs' do
-        valid_params = { name: 'Song', lyric: 'The lyric of the song', spotify_link: 'https://example.com' }
+      let(:valid_params) { { name: 'Song', lyric: 'The lyric of the song', spotify_link: 'https://example.com' } }
 
+      it 'create new songs' do
         expect { post '/api/songs', params: { song: valid_params } }.to change(Song, :count).by(+1)
         expect(response).to have_http_status(:created)
       end
