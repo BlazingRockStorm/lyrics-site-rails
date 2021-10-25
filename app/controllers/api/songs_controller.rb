@@ -19,12 +19,10 @@ module Api
     def create
       @song = Song.new(song_params)
 
-      respond_to do |format|
-        if @song.save
-          format.json { render :show, status: :created, location: @song }
-        else
-          format.json { render json: @song.errors, status: :unprocessable_entity }
-        end
+      if @song.save
+        render json: @song, status: :created
+      else
+        render json: @song.errors, status: :unprocessable_entity
       end
     end
 

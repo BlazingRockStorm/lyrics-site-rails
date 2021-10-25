@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :song do
-    name { 'テストを書く' }
-    lyric { 'RSpec&Capybara&FactoryBotを準備する' }
-    spotify_link { 'RSpec&Capybara&FactoryBotを準備する' }
+    sequence(:name) { |n| "Song#{n}_name" }
+    sequence(:lyric) { |n| "Song#{n}_lyric" }
+    sequence(:spotify_link) { |n| "https://www.example.com/#{n}" }
   end
 end
