@@ -28,12 +28,10 @@ module Api
 
     # PATCH/PUT /api/songs/1 or /api/songs/1.json
     def update
-      respond_to do |format|
-        if @song.update(song_params)
-          format.json { render :show, status: :ok, location: @song }
-        else
-          format.json { render json: @song.errors, status: :unprocessable_entity }
-        end
+      if @song.update(song_params)
+        render json: @song, status: :ok
+      else
+        render json: @song.errors, status: :unprocessable_entity
       end
     end
 
