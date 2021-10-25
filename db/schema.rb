@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 2021_10_22_125555) do
 
   create_table "songs", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
-    t.text "lyrics"
+    t.text "lyric"
     t.string "spotify_link"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
