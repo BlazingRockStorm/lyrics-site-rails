@@ -8,8 +8,9 @@ RSpec.describe 'Songs', type: :request do
 
     it 'shows all songs' do
       get api_songs_path
+      json = JSON.parse(response.body)
       expect(response).to have_http_status(:ok)
-      expect(response.body).to include(songs[0].name, songs[1].name, songs[2].name)
+      expect(json.length).to eq(3)
     end
   end
 
