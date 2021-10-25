@@ -40,9 +40,7 @@ module Api
     # DELETE /api/songs/1 or /api/songs/1.json
     def destroy
       @song.destroy
-      respond_to do |format|
-        format.json { head :no_content }
-      end
+      render json: { status: 'SUCCESS', message: 'Deleted the song', data: @song }
     end
 
     private

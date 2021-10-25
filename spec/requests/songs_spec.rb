@@ -14,10 +14,21 @@ RSpec.describe 'Songs', type: :request do
   end
 
   describe 'POST /api/songs' do
-    it 'create new songs' do
-      valid_params = { name: 'Song', lyric: 'The lyric of the song', spotify_link: 'https://example.com' }
-      expect { post '/api/songs', params: { song: valid_params } }.to change(Song, :count).by(+1)
-      expect(response).to have_http_status(:created)
+    context 'SUCCESS' do
+      it 'create new songs' do
+        valid_params = { name: 'Song', lyric: 'The lyric of the song', spotify_link: 'https://example.com' }
+        expect { post '/api/songs', params: { song: valid_params } }.to change(Song, :count).by(+1)
+        expect(response).to have_http_status(:created)
+      end
+    end
+  end
+
+  describe 'DELETE /api/songs/:id' do
+    it 'successfully delete a song' do
+      song = FactoryBot.create(:song)
+
+      expect { delete "/api/songs/#{song.id}" }.to change(Song, :count).by(-1)
+      expect(response).to have_http_status(:ok)
     end
   end
 end
