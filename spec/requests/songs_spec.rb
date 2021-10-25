@@ -4,12 +4,12 @@ require 'rails_helper'
 
 RSpec.describe 'Songs', type: :request do
   describe 'GET /api/songs' do
-    # let(:songs) { FactoryBot.create_list(:song, 3) }
+    let!(:songs) { FactoryBot.create_list(:song, 3) }
 
     it 'shows all songs' do
       get api_songs_path
       expect(response).to have_http_status(:ok)
-      # expect(response.body).to include(songs[0].name, songs[1].name, songs[2].name)
+      expect(response.body).to include(songs[0].name, songs[1].name, songs[2].name)
     end
   end
 
