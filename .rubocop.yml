@@ -75,3 +75,6 @@ RSpec/ImplicitSubject:
 
 RSpec/NamedSubject:
   Enabled: false
+
+RSpec/ExampleLength:
+  Enabled: false

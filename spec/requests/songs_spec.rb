@@ -14,6 +14,19 @@ RSpec.describe 'Songs', type: :request do
     end
   end
 
+  describe 'GET /api/songs/:id' do
+    let!(:song) { FactoryBot.create(:song) }
+
+    it "shows a song's info" do
+      get api_song_path(id: song.id)
+      json = JSON.parse(response.body)
+      expect(response).to have_http_status(:ok)
+      expect(json['name']).to eq(song.name)
+      expect(json['lyric']).to eq(song.lyric)
+      expect(json['spotify_link']).to eq(song.spotify_link)
+    end
+  end
+
   describe 'POST /api/songs' do
     context 'SUCCESS' do
       it 'create new songs' do
