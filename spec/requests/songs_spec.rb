@@ -4,13 +4,67 @@ require 'rails_helper'
 
 RSpec.describe 'Songs', type: :request do
   describe 'GET /api/songs' do
-    let!(:songs) { FactoryBot.create_list(:song, 3) }
-
-    it 'shows all songs' do
+    it 'can be access' do
       get api_songs_path
-      json = JSON.parse(response.body)
       expect(response).to have_http_status(:ok)
-      expect(json.length).to eq(3)
+    end
+
+    describe "Songs' names and their Spotify links" do
+      let!(:song) { FactoryBot.create(:song) }
+
+      before do
+        get api_songs_path
+      end
+
+      it 'fully displayed' do
+        expect(response.body).to include(song.name)
+        expect(response.body).to include(song.spotify_link)
+      end
+    end
+
+    describe 'paginations' do
+      let!(:songs) { FactoryBot.create_list(:song, 4) }
+
+      before do
+        stub_const('Api::SongsController::PAGE_LIMIT', 3)
+      end
+
+      context 'Page 1' do
+        before do
+          get api_songs_path, params: { page: 1 }
+        end
+
+        it 'contains song 1, song 2 and song 3' do
+          expect(response).to have_http_status(:ok)
+          expect(response.body).to include(songs[0].name, songs[1].name, songs[2].name)
+          expect(response.body).not_to include(songs[3].name)
+        end
+      end
+
+      context 'Page 2' do
+        before do
+          get api_songs_path, params: { page: 2 }
+        end
+
+        it 'contains song 4' do
+          expect(response).to have_http_status(:ok)
+          expect(response.body).to include(songs[3].name)
+          expect(response.body).not_to include(songs[0].name, songs[1].name, songs[2].name)
+        end
+      end
+
+      context 'Page 3' do
+        before do
+          get api_songs_path, params: { page: 3 }
+        end
+
+        it 'contains no song' do
+          json_response = JSON.parse(response.body)
+
+          expect(response).to have_http_status(:ok)
+          expect(json_response.length).to eq(0)
+        end
+      end
     end
   end
 

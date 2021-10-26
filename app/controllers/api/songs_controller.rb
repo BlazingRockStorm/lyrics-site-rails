@@ -3,10 +3,13 @@
 module Api
   class SongsController < ApplicationController
     before_action :set_song, only: %i[show update destroy]
+    PAGE_LIMIT = 10
 
     # GET /api/songs or /api/songs.json
     def index
-      @songs = Song.all
+      @songs = Song.
+               page(params[:page]).
+               per(PAGE_LIMIT)
       render json: @songs
     end
 
