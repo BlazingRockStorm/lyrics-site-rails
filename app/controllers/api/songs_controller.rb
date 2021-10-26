@@ -8,6 +8,7 @@ module Api
     # GET /api/songs or /api/songs.json
     def index
       @songs = Song.
+               select('id, name, spotify_link').
                page(params[:page]).
                per(PAGE_LIMIT)
       render json: @songs

@@ -19,6 +19,7 @@ RSpec.describe 'Songs', type: :request do
       it 'fully displayed' do
         expect(response.body).to include(song.name)
         expect(response.body).to include(song.spotify_link)
+        expect(response.body).not_to include(song.lyric)
       end
     end
 
