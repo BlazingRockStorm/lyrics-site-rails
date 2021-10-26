@@ -1,0 +1,14 @@
+# frozen_string_literal: true
+
+json = {
+  page: @songs.current_page,
+  pages: @songs.total_pages
+}
+
+json[:songs] = @songs.map do |song|
+  {
+    id: song.id,
+    name: song.name,
+    spotify_link: song.spotify_link,
+  }
+end
