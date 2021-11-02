@@ -8,9 +8,9 @@ module Api
     # GET /api/genres or /api/genres.json
     def index
       @genres = Genre.
-               select('id, name').
-               page(params[:page]).
-               per(PAGE_LIMIT)
+                select('id, name').
+                page(params[:page]).
+                per(PAGE_LIMIT)
       render json: @genres
     end
 
@@ -54,7 +54,7 @@ module Api
 
     # Only allow a list of trusted parameters through.
     def genre_params
-      params.fetch(:genre, {}).permit(:name, :lyric, :spotify_link)
+      params.fetch(:genre, {}).permit(:name)
     end
   end
 end
