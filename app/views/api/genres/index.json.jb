@@ -1,0 +1,13 @@
+# frozen_string_literal: true
+
+json = {
+  page: @genres.current_page,
+  pages: @genres.total_pages
+}
+
+json[:genres] = @genres.map do |genre|
+  {
+    id: genre.id,
+    name: genre.name
+  }
+end
