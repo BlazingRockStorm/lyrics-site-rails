@@ -10,3 +10,7 @@ jobs:
         with:
           target_repo_url:
             ${{ secrets.CODECOMMIT_REPOSITORY }}
+          ssh_private_key:
+            ${{ secrets.CODECOMMIT_SSH_PRIVATE_KEY }}
+          ssh_username:
+            ${{ secrets.CODECOMMIT_SSH_PRIVATE_KEY_ID }}
