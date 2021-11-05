@@ -1,5 +1,8 @@
 name: Sync Github master with CodeCommit master
-on: [ push, delete ]
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   to_codecommit:
