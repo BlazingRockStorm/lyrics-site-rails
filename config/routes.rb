@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'home#index'
   namespace :api do
     resources :songs, except: [:new, :edit]
     resources :genres, except: [:new, :edit]
