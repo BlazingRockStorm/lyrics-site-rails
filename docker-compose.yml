@@ -4,8 +4,17 @@ services:
     image: mysql:8.0
     volumes:
       - ./tmp/db:/var/lib/mysql
-    environment: 
+    environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
+  webpack:
+    image: 'lyrics-site-rails_web'
+    command: ./bin/webpack-dev-server
+    volumes:
+      - .:/lyrics-site-rails
+      - webpack:/usr/local/webpack
+      - node_modules:/usr/local/node_modules
+    ports:
+      - "3035:3035"
   web:
     build: .
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
@@ -16,5 +25,8 @@ services:
       - "3000:3000"
     depends_on:
       - db
+      - webpack
 volumes:
   bundle:
+  node_modules:
+  webpack:
