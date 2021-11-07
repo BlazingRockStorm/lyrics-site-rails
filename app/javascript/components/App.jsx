@@ -6,10 +6,9 @@ import Home from './Home'
 function App() {
   return (
     <div>
-      {/* <Routes>
+      <Routes>
         <Route path='/' element={<Home/>} />
-      </Routes> */}
-        Hello React
+      </Routes>
     </div>
   )
 }
