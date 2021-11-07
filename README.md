@@ -4,6 +4,10 @@
 
 * Rails version: 6.1.4
 
+* React version: 17.0
+
+* React Router: v6
+
 * System dependencies
 
 * Configuration
