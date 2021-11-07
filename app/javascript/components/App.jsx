@@ -6,9 +6,10 @@ import Home from './Home'
 function App() {
   return (
     <div>
-      <Routes>
-        <Route exact path='/' exact component={Home} />
-      </Routes>
+      {/* <Routes>
+        <Route path='/' element={<Home/>} />
+      </Routes> */}
+        Hello React
     </div>
   )
 }
