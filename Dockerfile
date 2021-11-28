@@ -12,3 +12,4 @@ COPY Gemfile /lyrics-site-rails/Gemfile
 COPY Gemfile.lock /lyrics-site-rails/Gemfile.lock
 RUN bundle install
 RUN yarn install --check-files
+RUN mkdir -p tmp/sockets

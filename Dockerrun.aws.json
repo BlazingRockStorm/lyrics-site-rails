@@ -1,4 +1,78 @@
 {
-  "AWSEBDockerrunVersion": "1",
-  "Ports" : [{ "ContainerPort": "3000" }]
+  "AWSEBDockerrunVersion": 2,
+  "volumes": [
+    {
+      "name": "source-bundle",
+      "host": {
+        "sourcePath": "/var/app/current"
+      }
+    },
+    {
+      "name": "public-data",
+      "host": {
+        "sourcePath": "/var/app/current/public"
+      }
+    },
+    {
+      "name": "tmp-data"
+    }
+  ],
+  "containerDefinitions": [
+    {
+      "name": "lyrics-site-rails-app",
+      "image": "068450627380.dkr.ecr.region.amazonaws.com/lyrics-site-rails_app:latest",
+      "essential": true,
+      "memory": 2000,
+      "command": ["bundle","exec","puma","-C","config/puma.rb"],
+      "mountPoints": [
+        {
+          "sourceVolume": "source-bundle",
+          "containerPath": "/var/www/lyrics-site-rails"
+        },
+        {
+          "sourceVolume": "tmp-data",
+          "containerPath": "/var/www/lyrics-site-rails/tmp"
+        },
+        {
+          "sourceVolume": "awseb-logs-lyrics-site-rails-app",
+          "containerPath": "/var/www/lyrics-site-rails/log"
+        }
+      ]
+    },
+    {
+      "name": "nginx",
+      "image": "068450627380.dkr.ecr.region.amazonaws.com/lyrics-site-rails_web:latest",
+      "essential": true,
+      "memory": 2000,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "links": [
+        "lyrics-site-rails-app"
+      ],
+      "dependsOn": [
+        {
+          "containerName": "lyrics-site-rails-app",
+          "condition": "START"
+        }
+      ],
+      "mountPoints": [
+        {
+          "sourceVolume": "tmp-data",
+          "containerPath": "/var/www/lyrics-site-rails/tmp"
+        },
+        {
+          "sourceVolume": "public-data",
+          "containerPath": "/var/www/lyrics-site-rails/public"
+        },
+        {
+          "sourceVolume": "awseb-logs-nginx",
+          "containerPath": "/var/log/nginx"
+        }
+      ]
+    }
+  ]
 }

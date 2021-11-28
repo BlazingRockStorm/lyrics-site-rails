@@ -36,3 +36,9 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+/public/assets
+
+# Elastic Beanstalk Files（これらは自動で追加されました）
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
