@@ -22,7 +22,7 @@
       "name": "lyrics-site-rails-app",
       "image": "068450627380.dkr.ecr.region.amazonaws.com/lyrics-site-rails_app:latest",
       "essential": true,
-      "memory": 2000,
+      "memory": 900,
       "command": ["bundle","exec","puma","-C","config/puma.rb"],
       "mountPoints": [
         {
@@ -43,7 +43,7 @@
       "name": "nginx",
       "image": "068450627380.dkr.ecr.region.amazonaws.com/lyrics-site-rails_web:latest",
       "essential": true,
-      "memory": 2000,
+      "memory": 900,
       "portMappings": [
         {
           "hostPort": 80,
