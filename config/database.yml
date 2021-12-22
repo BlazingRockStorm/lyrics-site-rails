@@ -50,6 +50,8 @@ test:
 #
 production:
   <<: *default
-  database: lyrics_site_rails_production
-  username: lyrics_site_rails
-  password: <%= ENV['LYRICS_SITE_RAILS_DATABASE_PASSWORD'] %>
+  database: ENV.fetch('RDS_DB_NAME')
+  username: ENV.fetch('RDS_USERNAME')
+  password: ENV.fetch('RDS_PASSWORD')
+  host: ENV.fetch('RDS_HOSTNAME')
+  port: ENV.fetch('RDS_PORT')
