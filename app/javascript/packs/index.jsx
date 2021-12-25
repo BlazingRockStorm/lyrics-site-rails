@@ -4,16 +4,14 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 import App from '../components/App'
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <Router>
-      <Routes>
-        <Route path='/' element={<App/>} />
-      </Routes>
-    </Router>,
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>,
     document.body.appendChild(document.createElement('div'))
   )
 })
