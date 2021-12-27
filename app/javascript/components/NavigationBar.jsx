@@ -1,14 +1,13 @@
 import React from 'react'
 import { Navbar, Nav, Container } from 'react-bootstrap'
-import { styled } from '@mui/material/styles'
 
-const MyNavbar = styled(Navbar)({
+var mynavbarclass = {
   background: '#1D1D6A'
-})
+}
 
 function NavigationBar() {
   return (
-    <MyNavbar variant='dark'>
+    <Navbar variant='dark' style={mynavbarclass}>
       <Container>
         <Navbar.Brand href='#home'>Navbar</Navbar.Brand>
         <Nav className='me-auto'>
@@ -17,7 +16,7 @@ function NavigationBar() {
           <Nav.Link href='#pricing'>Pricing</Nav.Link>
         </Nav>
       </Container>
-    </MyNavbar>
+    </Navbar>
   )
 }
 

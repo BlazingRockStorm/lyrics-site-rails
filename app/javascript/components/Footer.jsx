@@ -1,8 +1,13 @@
 import React from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
+import { styled } from '@mui/material/styles'
+
+const MyCopyRightFooter = styled('div')({
+  backgroundColor: 'aliceblue'
+})
 
 const Footer = () =>
-  <footer className='page-footer font-small blue pt-4'>
+  <footer className='page-footer font-small pt-4'>
     <Container fluid className='text-center text-md-left'>
       <Row>
         <Col md={6} mt-md={0} mt={3}>
@@ -34,9 +39,11 @@ const Footer = () =>
       </Row>
     </Container>
 
-    <div className='footer-copyright text-center py-3'>© 2020 Copyright:
-      <a href='https://mdbootstrap.com/'> MDBootstrap.com</a>
-    </div>
+    <MyCopyRightFooter className='text-center py-3'>© 2021 Copyright:
+      <p>
+        <a href='https://github.com/BlazingRockStorm'>BlazingRockStorm</a> a.k.a. Gryqhon
+      </p>
+    </MyCopyRightFooter>
 
   </footer>
 
