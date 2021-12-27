@@ -1,14 +1,19 @@
 import React from 'react'
-import { Container, Row, Col } from 'react-bootstrap'
+import { Container, Row, Col, ListGroup } from 'react-bootstrap'
 import { styled } from '@mui/material/styles'
 
 const MyCopyRightFooter = styled('div')({
   backgroundColor: 'aliceblue'
 })
 
+var linkfooter = {
+  background: '#222222',
+  color: 'white'
+}
+
 const Footer = () =>
-  <footer className='page-footer font-small pt-4'>
-    <Container fluid className='text-center text-md-left'>
+  <footer className='font-small pt-4'>
+    <Container fluid className='text-center text-md-left' style={linkfooter}>
       <Row>
         <Col md={6} mt-md={0} mt={3}>
           <h5 className='text-uppercase'>Footer Content</h5>
@@ -39,9 +44,20 @@ const Footer = () =>
       </Row>
     </Container>
 
-    <MyCopyRightFooter className='text-center py-3'>© 2021 Copyright:
+    <ListGroup horizontal className='d-flex justify-content-center'>
+      <ListGroup.Item><a href='#!'>運営会社</a></ListGroup.Item>
+      <ListGroup.Item><a href='#!'>メディア掲載情報</a></ListGroup.Item>
+      <ListGroup.Item><a href='#!'>利用規約</a></ListGroup.Item>
+      <ListGroup.Item><a href='#!'>プライバシーポリシー</a></ListGroup.Item>
+      <ListGroup.Item><a href='#!'>お問い合わせ・リクエスト</a></ListGroup.Item>
+      <ListGroup.Item><a href='#!'>コンテンツ</a></ListGroup.Item>
+      <ListGroup.Item><a href='#!'>広告掲載</a></ListGroup.Item>
+      <ListGroup.Item><a href='#!'>スタッフ募集</a></ListGroup.Item>
+    </ListGroup>
+
+    <MyCopyRightFooter className='text-center py-3'>
       <p>
-        <a href='https://github.com/BlazingRockStorm'>BlazingRockStorm</a> a.k.a. Gryqhon
+        © 2021 Copyright: <a href='https://github.com/BlazingRockStorm'>BlazingRockStorm</a> a.k.a. Gryqhon
       </p>
     </MyCopyRightFooter>
 
