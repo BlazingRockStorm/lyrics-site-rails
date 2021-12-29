@@ -12,7 +12,7 @@ const Song = ({ name, spotify_link, ...props }) => {
       <SongName>
         {name}
       </SongName>
-      <a href={`${spotify_link}`} target="_blank" >Listen on Spotify</a>
+      <p>{spotify_link}</p>
     </Card>
   )
 }

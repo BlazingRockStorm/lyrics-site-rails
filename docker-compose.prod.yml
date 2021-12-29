@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  app:
+  web:
     build: .
     command: bundle exec puma -C config/puma.rb
     environment:
@@ -10,7 +10,7 @@ services:
       - .:/var/www/lyrics-site-rails
       - tmp-prod-data:/var/www/lyrics-site-rails/tmp
 
-  web:
+  server:
     build:
       context: containers/nginx
     volumes:
@@ -18,7 +18,7 @@ services:
     ports:
       - 80:80
     depends_on:
-      - app
+      - web
 
 volumes:
   tmp-prod-data:
