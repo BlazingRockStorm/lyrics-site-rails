@@ -6,13 +6,13 @@ const SongName = styled('h3')({
   color: 'black'
 })
 
-const Song = ({ name, spotify_link, ...props }) => {
+const Song = ({ name, spotifyLink, ...props }) => {
   return (
     <Card>
       <SongName>
         {name}
       </SongName>
-      <p>{spotify_link}</p>
+      <a href={`${spotifyLink}`} target="_blank" >Listen on Spotify</a>
     </Card>
   )
 }
