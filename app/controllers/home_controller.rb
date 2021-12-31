@@ -8,6 +8,6 @@ class HomeController < ApplicationController
   end
 
   def songs
-    redirect_to action: "index"
+    redirect_to action: 'index'
   end
 end
