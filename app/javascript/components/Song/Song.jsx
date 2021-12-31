@@ -20,6 +20,7 @@ function Song() {
   return (
     <div>
       <p>{song.name}</p>
+      <a href={`${song.spotify_link}`} target="_blank" >スポティファイで聞こう！</a>
       <Lyric>{song.lyric}</Lyric>
     </div>
   )
