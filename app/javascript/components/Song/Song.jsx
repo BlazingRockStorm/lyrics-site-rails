@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router'
 import { styled } from '@mui/material'
+import { Link } from 'react-router-dom'
 
 function Song() {
   const [song, setSong] = useState([])
@@ -22,6 +23,7 @@ function Song() {
       <p>{song.name}</p>
       <a href={`${song.spotify_link}`} target="_blank" >スポティファイで聞こう！</a>
       <Lyric>{song.lyric}</Lyric>
+      <Link to='/'>戻る</Link>
     </div>
   )
 }
