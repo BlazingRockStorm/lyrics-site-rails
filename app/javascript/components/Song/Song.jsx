@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router'
+import { styled } from '@mui/material'
 
 function Song() {
   const [song, setSong] = useState([])
@@ -12,10 +13,14 @@ function Song() {
       .catch(data => console.log('error', data))
   }, [])
 
+  const Lyric = styled('div')({
+    whiteSpace: 'pre-wrap'
+  })
+
   return (
     <div>
       <p>{song.name}</p>
-      <p>{song.lyric}</p>
+      <Lyric>{song.lyric}</Lyric>
     </div>
   )
 }
