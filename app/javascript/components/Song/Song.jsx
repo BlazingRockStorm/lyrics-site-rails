@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router'
 import { styled } from '@mui/material'
+import { Link } from 'react-router-dom'
+import { Card, Col, Container, Row } from 'react-bootstrap'
 
 function Song() {
   const [song, setSong] = useState([])
@@ -18,10 +20,24 @@ function Song() {
   })
 
   return (
-    <div>
-      <p>{song.name}</p>
-      <Lyric>{song.lyric}</Lyric>
-    </div>
+    <Container>
+      <Row>
+        <Col md={9}>
+          <Card>
+            <Card.Header>
+              <Card.Title>{song.name}</Card.Title>
+              <Card.Subtitle className="mb-2 text-muted">
+                <a href={`${song.spotify_link}`} target='_blank' >スポティファイで聞こう！</a>
+              </Card.Subtitle>
+            </Card.Header>
+            <Card.Body>
+              <Lyric>{song.lyric}</Lyric>
+              <Link to='/'>戻る</Link>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
   )
 }
 

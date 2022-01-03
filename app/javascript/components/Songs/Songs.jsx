@@ -15,6 +15,7 @@ function Songs() {
     return (
       <Song
         key={song.id}
+        id={song.id}
         name={song.name}
         spotifyLink={song.spotify_link}
       />
