@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { Col, Container, Row } from 'react-bootstrap'
 import Detail from './Detail'
 
@@ -23,6 +23,7 @@ function Song() {
             spotifyLink={song.spotify_link}
             lyric={song.lyric}
           />
+          <Link className='btn btn-link' to='/'>戻る</Link>
         </Col>
       </Row>
     </Container>
