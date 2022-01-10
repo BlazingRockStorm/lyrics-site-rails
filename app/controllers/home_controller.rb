@@ -7,6 +7,10 @@ class HomeController < ApplicationController
     render 'index'
   end
 
+  def new_song
+    render 'index'
+  end
+
   def songs
     redirect_to action: 'index'
   end

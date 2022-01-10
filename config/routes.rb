@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :genres, except: [:new, :edit]
   end
   get '/songs/:id', to: 'home#song_detail', as: :song
+  get '/songs/new', to: 'home#new_song', as: :new_song
   get '/songs', to: 'home#songs'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
