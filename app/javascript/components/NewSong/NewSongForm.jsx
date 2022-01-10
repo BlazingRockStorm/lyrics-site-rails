@@ -1,9 +1,11 @@
 import React from 'react'
 import { Form, Button } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const NewSongForm = ({ onNewSong = (f) => f }) => {
   let _name, _lyric, _spotify_link
+  let navigate = useNavigate()
+
   const submit = (e) => {
     e.preventDefault()
     onNewSong(_name.value, _lyric.value, _spotify_link.value)
@@ -11,6 +13,7 @@ const NewSongForm = ({ onNewSong = (f) => f }) => {
     _lyric.value = ''
     _spotify_link.value = ''
     _name.focus()
+    navigate('/', { replace: true })
   }
 
   return (
@@ -22,7 +25,7 @@ const NewSongForm = ({ onNewSong = (f) => f }) => {
 
       <Form.Group className='mb-3'>
         <Form.Label>Lyric</Form.Label>
-        <Form.Control as='textarea' rows={20} ref={(input) => (_lyric = input)} placeholder='Lyric'/>
+        <Form.Control as='textarea' rows={20} ref={(input) => (_lyric = input)} placeholder='Lyric' />
       </Form.Group>
 
       <Form.Group className='mb-3'>
