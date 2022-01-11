@@ -10,17 +10,19 @@ const SongName = styled(Link)({
 
 const Song = ({ id, name, spotifyLink, ...props }) => {
   return (
-    <Card>
-      <SongName to={`/songs/${id}`} >
-        <h3>{name}</h3>
-      </SongName>
-      <a href={`${spotifyLink}`} className='btn btn-link' target='_blank' >スポティファイで聞こう！</a>
-      <button
-        className='btn btn-danger'
-        onClick={(e) => props.onDelete(id, e)}
-      >
-        削除
-      </button>
+    <Card className='mt-3 mb-3'>
+      <Card.Body>
+        <SongName to={`/songs/${id}`} >
+          <h3>{name}</h3>
+        </SongName>
+        <a href={`${spotifyLink}`} className='btn btn-link' target='_blank' >スポティファイで聞こう！</a>
+        <button
+          className='btn btn-danger'
+          onClick={(e) => props.onDelete(id, e)}
+        >
+          削除
+        </button>
+      </Card.Body>
     </Card>
   )
 }

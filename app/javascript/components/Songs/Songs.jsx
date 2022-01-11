@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Song from './Song'
 import { Link } from 'react-router-dom'
+import { Container } from 'react-bootstrap'
 
 function Songs() {
   const [songs, setSongs] = useState([])
@@ -41,10 +42,10 @@ function Songs() {
   })
 
   return (
-    <div>
+    <Container fluid>
       {songslist}
       <Link className='btn btn-primary' to='/songs/new'>新歌詞を追加する</Link>
-    </div>
+    </Container>
   )
 }
 
