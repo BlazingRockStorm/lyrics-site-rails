@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { useParams } from 'react-router'
+import { useParams } from 'react-router-dom'
 import { Col, Container, Row } from 'react-bootstrap'
 import Detail from './Detail'
 
