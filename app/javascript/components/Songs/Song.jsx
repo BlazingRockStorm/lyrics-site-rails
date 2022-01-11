@@ -14,7 +14,13 @@ const Song = ({ id, name, spotifyLink, ...props }) => {
       <SongName to={`/songs/${id}`} >
         <h3>{name}</h3>
       </SongName>
-      <a href={`${spotifyLink}`} target='_blank' >スポティファイで聞こう！</a>
+      <a href={`${spotifyLink}`} className='btn btn-link' target='_blank' >スポティファイで聞こう！</a>
+      <button
+        className='btn btn-danger'
+        onClick={(e) => props.onDelete(id, e)}
+      >
+        削除
+      </button>
     </Card>
   )
 }
