@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { Col, Container, Row } from 'react-bootstrap'
 import Detail from './Detail'
+import EditSongForm from './EditSongForm'
 
 function Song() {
   const [song, setSong] = useState([])
+  const [editable, setEditable] = useState(false)
   const { id } = useParams()
 
   useEffect(() => {
@@ -18,12 +20,19 @@ function Song() {
     <Container>
       <Row>
         <Col md={9}>
-          <Detail
-            name={song.name}
-            spotifyLink={song.spotify_link}
-            lyric={song.lyric}
-          />
-          <Link className='btn btn-link' to='/'>戻る</Link>
+          {
+            editable ? <EditSongForm
+              name={song.name}
+              spotifyLink={song.spotify_link}
+              lyric={song.lyric}
+              editable={editable}
+            /> : <Detail
+              name={song.name}
+              spotifyLink={song.spotify_link}
+              lyric={song.lyric}
+              editable={editable}
+            />
+          }
         </Col>
       </Row>
     </Container>
