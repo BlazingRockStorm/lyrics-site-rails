@@ -7,7 +7,7 @@ const Lyric = styled('div')({
   whiteSpace: 'pre-wrap'
 })
 
-const Detail = ({ name, spotifyLink, lyric, editable, editSong, ...props }) => {
+const Detail = ({ name, spotifyLink, lyric, setEditable, ...props }) => {
   return (
     <Card>
       <Card.Header>
@@ -18,7 +18,7 @@ const Detail = ({ name, spotifyLink, lyric, editable, editSong, ...props }) => {
       </Card.Header>
       <Card.Body>
         <Lyric>{lyric}</Lyric>
-        <Button onClick={() => {editSong()}} >修正する</Button>
+        <Button onClick={() => {setEditable(true)}} >修正する</Button>
         <Link className='btn btn-link' to='/'>戻る</Link>
       </Card.Body>
     </Card>
