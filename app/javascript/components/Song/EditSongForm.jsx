@@ -1,7 +1,7 @@
 import React from 'react'
-import { Card } from 'react-bootstrap'
+import { Card, Button } from 'react-bootstrap'
 
-const EditSongForm = ({ name, spotifyLink, lyric, editable, ...props }) => {
+const EditSongForm = ({ name, spotifyLink, lyric, editable, setEditable, ...props }) => {
   return (
     <Card>
       <Card.Body>
@@ -9,7 +9,7 @@ const EditSongForm = ({ name, spotifyLink, lyric, editable, ...props }) => {
         <p>Input: {spotifyLink}</p>
         <p>Input: {lyric}</p>
         <Button>修正する</Button>
-        <Button>キャンセル</Button>
+        <Button onClick={() => setEditable(false)}>キャンセル</Button>
       </Card.Body>
     </Card>
   )

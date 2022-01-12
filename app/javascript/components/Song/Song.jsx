@@ -16,6 +16,10 @@ function Song() {
       .catch(data => console.log('error', data))
   }, [])
 
+  function editSong() {
+    setEditable(true)
+  }
+
   return (
     <Container>
       <Row>
@@ -26,11 +30,13 @@ function Song() {
               spotifyLink={song.spotify_link}
               lyric={song.lyric}
               editable={editable}
+              setEditable={setEditable}
             /> : <Detail
               name={song.name}
               spotifyLink={song.spotify_link}
               lyric={song.lyric}
               editable={editable}
+              editSong={editSong}
             />
           }
         </Col>
