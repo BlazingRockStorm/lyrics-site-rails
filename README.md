@@ -20,6 +20,9 @@
 ```
 bundle exec rspec
 ```
+```
+bundle exec rubocop -A
+```
 
 * Services (job queues, cache servers, search engines, etc.)
 
