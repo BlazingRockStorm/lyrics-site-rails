@@ -7,6 +7,9 @@ jobs:
   delete-branch:
     runs-on: ubuntu-latest
     steps:
+      - name: Sleep for 2 minutes
+        run: sleep 120s
+        shell: bash
       - name: delete branch
         uses: SvanBoxel/delete-merged-branch@main
         env:
