@@ -17,9 +17,11 @@
 * Database initialization
 
 * How to run the test suite:
+Run RSpec:
 ```
 bundle exec rspec
 ```
+Run Rubocop:
 ```
 bundle exec rubocop -A
 ```
