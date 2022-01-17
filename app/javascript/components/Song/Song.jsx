@@ -16,6 +16,8 @@ function Song() {
       .catch(data => console.log('error', data))
   }, [])
 
+  function editSong() { }
+
   return (
     <Container>
       <Row>
@@ -25,7 +27,7 @@ function Song() {
               name={song.name}
               spotifyLink={song.spotify_link}
               lyric={song.lyric}
-              editable={editable}
+              editSong={editSong}
               setEditable={setEditable}
             /> : <Detail
               name={song.name}
