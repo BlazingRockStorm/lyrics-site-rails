@@ -1,7 +1,7 @@
 import React from 'react'
 import { Form, Button } from 'react-bootstrap'
 
-const EditSongForm = ({ name, spotifyLink, lyric, editable, setEditable, ...props }) => {
+const EditSongForm = ({ name, spotifyLink, lyric, ...props }) => {
   return (
     <Form>
       <Form.Group className='mb-3'>
@@ -21,7 +21,7 @@ const EditSongForm = ({ name, spotifyLink, lyric, editable, setEditable, ...prop
 
       <Button variant='primary' type='submit'>修正完了</Button>
       <Button variant='secondary'
-        onClick={() => setEditable(false)}
+        onClick={() => props.setEditable(false)}
         className='mx-2'
       >
         キャンセル
