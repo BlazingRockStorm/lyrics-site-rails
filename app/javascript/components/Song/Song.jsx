@@ -16,7 +16,12 @@ function Song() {
       .catch(data => console.log('error', data))
   }, [])
 
-  function editSong() { }
+  function editSong(name, lyric, spotify_link) {
+    axios
+      .patch(`/api/songs/${id}`, { song: { name, lyric, spotify_link } })
+      .then(resp => setSong(resp.data))
+      .catch(data => console.log('error', data))
+  }
 
   return (
     <Container>
