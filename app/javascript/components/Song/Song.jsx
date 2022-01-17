@@ -3,9 +3,11 @@ import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import { Col, Container, Row } from 'react-bootstrap'
 import Detail from './Detail'
+import EditSongForm from './EditSongForm'
 
 function Song() {
   const [song, setSong] = useState([])
+  const [editable, setEditable] = useState(false)
   const { id } = useParams()
 
   useEffect(() => {
@@ -14,15 +16,32 @@ function Song() {
       .catch(data => console.log('error', data))
   }, [])
 
+  function editSong(name, lyric, spotify_link) {
+    axios
+      .patch(`/api/songs/${id}`, { song: { name, lyric, spotify_link } })
+      .then(resp => setSong(resp.data))
+      .catch(data => console.log('error', data))
+  }
+
   return (
     <Container>
       <Row>
         <Col md={9}>
-          <Detail
-            name={song.name}
-            spotifyLink={song.spotify_link}
-            lyric={song.lyric}
-          />
+          {
+            editable ? <EditSongForm
+              name={song.name}
+              spotifyLink={song.spotify_link}
+              lyric={song.lyric}
+              editSong={editSong}
+              setEditable={setEditable}
+            /> : <Detail
+              name={song.name}
+              spotifyLink={song.spotify_link}
+              lyric={song.lyric}
+              editable={editable}
+              setEditable={setEditable}
+            />
+          }
         </Col>
       </Row>
     </Container>
