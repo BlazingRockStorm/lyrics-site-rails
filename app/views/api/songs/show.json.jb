@@ -4,5 +4,7 @@ json = {
   id: @song.id,
   name: @song.name,
   lyric: @song.lyric,
-  name: @song.genre.name
+  genre: @song.genre.name
 }
+
+json
