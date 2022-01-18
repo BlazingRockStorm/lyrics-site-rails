@@ -20,10 +20,13 @@ function Song() {
       .catch(data => console.log('error', data))
   }, [])
 
-  function editSong(name, lyric, spotify_link) {
+  function editSong(name, lyric, spotify_link, genre_id) {
     axios
-      .patch(`/api/songs/${id}`, { song: { name, lyric, spotify_link } })
-      .then(resp => setSong(resp.data))
+      .patch(`/api/songs/${id}`, { song: { name, lyric, spotify_link, genre_id } })
+      .then(function (resp) {
+        setSong(resp.data)
+        setSongGenre(resp.data.genre.name)
+      })
       .catch(data => console.log('error', data))
   }
 
@@ -36,6 +39,7 @@ function Song() {
               name={song.name}
               spotifyLink={song.spotify_link}
               lyric={song.lyric}
+              genreId={song.genre_id}
               editSong={editSong}
               setEditable={setEditable}
             /> : <Detail
