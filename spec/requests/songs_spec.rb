@@ -79,12 +79,14 @@ RSpec.describe 'Songs', type: :request do
       expect(json['name']).to eq(song.name)
       expect(json['lyric']).to eq(song.lyric)
       expect(json['spotify_link']).to eq(song.spotify_link)
+      expect(json['genre_id']).to eq(song.genre_id)
     end
   end
 
   describe 'POST /api/songs' do
     context 'SUCCESS' do
-      let(:valid_params) { { name: 'Song', lyric: 'The lyric of the song', spotify_link: 'https://example.com' } }
+      let(:genre) { FactoryBot.create(:genre) }
+      let(:valid_params) { { name: 'Song', lyric: 'The lyric of the song', spotify_link: 'https://example.com', genre_id: genre.id } }
 
       it 'create new songs' do
         expect { post '/api/songs', params: { song: valid_params } }.to change(Song, :count).by(+1)

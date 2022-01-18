@@ -5,5 +5,6 @@ FactoryBot.define do
     sequence(:name) { |n| "Song#{n}_name" }
     sequence(:lyric) { |n| "Song#{n}_lyric" }
     sequence(:spotify_link) { |n| "https://www.example.com/#{n}" }
+    genre
   end
 end

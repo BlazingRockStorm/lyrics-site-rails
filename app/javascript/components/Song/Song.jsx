@@ -36,6 +36,7 @@ function Song() {
               setEditable={setEditable}
             /> : <Detail
               name={song.name}
+              genre={song.genre_id}
               spotifyLink={song.spotify_link}
               lyric={song.lyric}
               editable={editable}
