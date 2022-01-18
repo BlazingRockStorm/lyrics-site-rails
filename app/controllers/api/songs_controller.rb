@@ -54,7 +54,7 @@ module Api
 
     # Only allow a list of trusted parameters through.
     def song_params
-      params.fetch(:song, {}).permit(:name, :lyric, :spotify_link)
+      params.fetch(:song, {}).permit(:name, :lyric, :spotify_link, :genre_id)
     end
   end
 end
