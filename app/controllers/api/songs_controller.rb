@@ -16,7 +16,7 @@ module Api
 
     # GET /api/songs/1 or /api/songs/1.json
     def show
-      render json: @song
+      render json: @song.to_json(:include => :genre)
     end
 
     # POST /api/songs or /api/songs.json

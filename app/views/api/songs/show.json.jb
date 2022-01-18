@@ -1,3 +1,8 @@
 # frozen_string_literal: true
 
-json.partial! 'songs/song', song: @song
+json = {
+  id: @song.id,
+  name: @song.name,
+  lyric: @song.lyric,
+  name: @song.genre.name
+}

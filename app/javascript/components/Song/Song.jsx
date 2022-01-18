@@ -7,12 +7,16 @@ import EditSongForm from './EditSongForm'
 
 function Song() {
   const [song, setSong] = useState([])
+  const [songGenre, setSongGenre] = useState([])
   const [editable, setEditable] = useState(false)
   const { id } = useParams()
 
   useEffect(() => {
     axios.get(`/api/songs/${id}`)
-      .then(resp => setSong(resp.data))
+      .then(function (resp) {
+        setSong(resp.data)
+        setSongGenre(resp.data.genre.name)
+      })
       .catch(data => console.log('error', data))
   }, [])
 
@@ -36,7 +40,7 @@ function Song() {
               setEditable={setEditable}
             /> : <Detail
               name={song.name}
-              genre={song.genre_id}
+              genre={songGenre}
               spotifyLink={song.spotify_link}
               lyric={song.lyric}
               editable={editable}
