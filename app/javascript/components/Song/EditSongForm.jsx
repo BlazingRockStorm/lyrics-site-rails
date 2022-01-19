@@ -1,8 +1,16 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 import { Form, Button } from 'react-bootstrap'
 
 const EditSongForm = ({ name, spotifyLink, lyric, genreId, editSong = (f) => f, ...props }) => {
   let _name, _lyric, _spotify_link, _genreId
+  const [genres, setGenres] = useState([])
+
+  useEffect(() => {
+    axios.get('/api/genres')
+      .then(resp => setGenres(resp.data))
+      .catch(data => console.log('error', data))
+  }, [])
 
   const onSubmit = (e) => {
     e.preventDefault()
@@ -24,7 +32,13 @@ const EditSongForm = ({ name, spotifyLink, lyric, genreId, editSong = (f) => f, 
 
       <Form.Group className='mb-3'>
         <Form.Label>ジャンル</Form.Label>
-        <Form.Control ref={(input) => (_genreId = input)} placeholder='Genre' defaultValue={genreId} />
+        <Form.Select ref={(input) => (_genreId = input)} defaultValue={genreId} >
+          {genres.map((genre) => {
+            return (
+              <option value={genre.id}>{genre.name}</option>
+            )
+          })}
+        </Form.Select>
       </Form.Group>
 
       <Form.Group className='mb-3'>
@@ -34,7 +48,7 @@ const EditSongForm = ({ name, spotifyLink, lyric, genreId, editSong = (f) => f, 
 
       <Form.Group className='mb-3'>
         <Form.Label>スポティファイリンク</Form.Label>
-        <Form.Control ref={(input) => (_spotify_link = input)} type='text' placeholder='Spotify Link'  defaultValue={spotifyLink} />
+        <Form.Control ref={(input) => (_spotify_link = input)} type='text' placeholder='Spotify Link' defaultValue={spotifyLink} />
       </Form.Group>
 
       <Button variant='primary' type='submit'>修正完了</Button>
