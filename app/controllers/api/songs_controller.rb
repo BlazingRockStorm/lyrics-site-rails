@@ -16,7 +16,7 @@ module Api
 
     # GET /api/songs/1 or /api/songs/1.json
     def show
-      render json: @song
+      render json: @song.to_json(include: :genre)
     end
 
     # POST /api/songs or /api/songs.json
@@ -54,7 +54,7 @@ module Api
 
     # Only allow a list of trusted parameters through.
     def song_params
-      params.fetch(:song, {}).permit(:name, :lyric, :spotify_link)
+      params.fetch(:song, {}).permit(:name, :lyric, :spotify_link, :genre_id)
     end
   end
 end

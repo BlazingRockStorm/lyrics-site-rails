@@ -4,9 +4,9 @@ import axios from 'axios'
 import NewSongForm from './NewSongForm'
 
 function NewSong() {
-  function addNewSong(name, lyric, spotify_link) {
+  function addNewSong(name, lyric, spotify_link, genre_id) {
     axios
-      .post("/api/songs", { song: { name, lyric, spotify_link } })
+      .post("/api/songs", { song: { name, lyric, spotify_link, genre_id } })
       .catch(data => console.log('error', data))
   }
 

@@ -8,9 +8,7 @@ module Api
     # GET /api/genres or /api/genres.json
     def index
       @genres = Genre.
-                select('id, name').
-                page(params[:page]).
-                per(PAGE_LIMIT)
+                select('id, name').all
       render json: @genres
     end
 
