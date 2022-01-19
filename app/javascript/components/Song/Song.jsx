@@ -6,7 +6,7 @@ import Detail from './Detail'
 import EditSongForm from './EditSongForm'
 
 function Song() {
-  const [song, setSong] = useState([])
+  const [song, setSong] = useState({})
   const [songGenre, setSongGenre] = useState([])
   const [editable, setEditable] = useState(false)
   const { id } = useParams()
